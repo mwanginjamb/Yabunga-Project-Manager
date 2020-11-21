@@ -10,124 +10,53 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Login';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-login">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1><?= Html::encode($this->title) ?></h1>
 
-            <p>Please fill out the following fields to login:</p>
+    <div class="form-container sign-up-container">
 
-            <?php $form = ActiveForm::begin([
-                'id' => 'login-form',
-                /* 'layout' => 'horizontal',
-                 'fieldConfig' => [
-                     'template' => "{label}\n<div class=\"col-lg-6\">{input}</div>\n<div class=\"col-lg-6\">{error}</div>",
-                     'labelOptions' => ['class' => 'col-lg-1 control-label'],
-                 ],*/
-            ]); ?>
+            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-            <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-            <?= $form->field($model, 'password')->passwordInput() ?>
+                <h1>Sign In </h1>
 
-            <?= $form->field($model, 'rememberMe')->checkbox([
-                'template' => "<div class=\"col-lg-offset-1 col-lg-3\">{input} {label}</div>\n<div class=\"col-lg-8\">{error}</div>",
-            ]) ?>
-
-            <div style="margin:1em 0">
-                If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
-                <br>
-                Need new verification email? <?= Html::a('Resend', ['site/resend-verification-email']) ?>
-            </div>
-
-            <div class="form-group">
-                <div class="col-lg-offset-1 col-lg-11">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                    <?= Html::a('Sign Up',['signup'],['title' => 'I have no account, I wanna Register.']) ?>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-            </div>
+
+                <span>Use your Credentials to Sign In</span>
+
+                <?= $form->field($model, 'username')->textInput(['placeholder' => 'Username','autofocus' => true,'autocomplete'=> 'off'])->label(false) ?>
+
+                <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Password','autocomplete'=> 'off'])->label(false) ?>
+
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+
+               <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+
 
             <?php ActiveForm::end(); ?>
 
-
-        </div>
     </div>
 
-</div>
+    <div class="action-buttons">
+        <?= Html::a('Reset Password', ['site/request-password-reset'],['class' => 'btn btn-outline-primary']) ?>
+        <?= Html::a('Resend Verification Email', ['site/resend-verification-email'],['class' => 'btn btn-outline-primary']) ?>
+    </div>
+
+
+
+
+
+
+
 
 <?php
 
 $style = <<<CSS
 
-    body, .site-login {
-        color: #fff;
-    }
-    .login-page { 
-          background: linear-gradient(0deg, rgba(0,0,0,0.2), rgba(0,0,0,0.6)),url("../../images/bg.jpg") no-repeat center center fixed; 
-          -webkit-background-size: cover;
-          -moz-background-size: cover;
-          -o-background-size: cover;
-          background-size: cover;
-        
-    }
-    
-    .top-logo {
-        display: flex;
-        margin-left: 10px;
-       
-    }
-     .top-logo img { 
-                width: 120px;
-                height: auto;
-                position: absolute;
-                left: 15px;
-                top:15px;
-                
-          
-            }
-     .login-logo a  {
-        color: #E5173F!important;
-        font-family: sans-serif, Verdana;
-        font-size: larger;
-        font-weight: 400;
-     }
-
-    input.form-control {
-        border-left: 0!important;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border: 1px solid #f6c844;
-    }
-    
-    span.input-group-text {
-        border-right: 0;
-        border-top-right-radius: 0;
-        border-bottom-right-radius: 0;
-        border: 1px solid #f6c844;
-    }
-
-    span.unlock {
-        position: absolute;
-        right: 22px;
-        top: 32%;
-        cursor: pointer;
-
-    }
-
-    span.unlock *{
-        font-size: 20px;
-        color: #7a79e;
-    }
-    
-   .card {
-    background-color: rgba(0,0,0,.1);
-   }
    
-   .login-card-body {
-     background-color: rgba(0,0,0,.1);
-   }
-
-    
     
 CSS;
 

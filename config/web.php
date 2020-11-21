@@ -22,7 +22,7 @@ $config = [
         ],
         'user' => [
             'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'enableAutoLogin' => false,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -53,11 +53,15 @@ $config = [
         ],
         'db' => $db,
         'assetManager' => [
+            'appendTimestamp' => true,
             'bundles' => [
                 'yii\web\JqueryAsset' => [
                     'sourcePath' => null,
                     'js' => ['/plugins/jquery/jquery.js'],
-                ]
+                ],
+                'yii\bootstrap\BootstrapAsset' => false,
+                'yii\bootstrap\BootstrapPluginAsset' => false,
+                'yii\web\YiiAsset' => false,
             ]
         ],
         'urlManager' => [

@@ -10,10 +10,10 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
-use app\assets\AdminlteAsset;
+use app\assets\LoginAsset;
 use app\widgets\Alert;
 
-AdminlteAsset::register($this);
+LoginAsset::register($this);
 $this->title = Yii::$app->params['WelcomeText'];
 ?>
 <?php $this->beginPage() ?>
@@ -28,48 +28,52 @@ $this->title = Yii::$app->params['WelcomeText'];
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="hold-transition login-page">
+<body>
 <?php $this->beginBody() ?>
 
-<div class="top-logo">
-    <img src="<?= \yii\helpers\Url::to('/images/logo.png')?>" width="200" height="150" />
-</div>
 
-<div class="login-logo">
-    <a href="#"><b><?= $this->title ?></a>
-</div>
-<!-- /.login-logo -->
-<div class="card">
-    <div class="card-body login-card-body">
-        <!--<p class="login-box-msg">Sign in to start your session</p>-->
+<div class="container" id="container">
+
+
 
         <?= $content?>
 
-        <!--<div class="social-auth-links text-center mb-3">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-primary">
-                <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-            </a>
-            <a href="#" class="btn btn-block btn-danger">
-                <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-            </a>
-        </div>-->
 
+    <!-- Overlay Container -->
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back</h1>
+
+                <p>If you are one of our, sign in with your account details.</p>
+                <button class="ghost">Sign In</button>
+            </div>
+
+            <div class="overlay-panel overlay-right">
+                <h1>Hello There!</h1>
+                <p>Welcome to Yabunga Projects. Start your prosperity journey with us.</p>
+                <!--<button class="ghost">Sign Up</button>-->
+
+                <?= (Yii::$app->controller->action->id == 'login')?html::a('Sign Up',['signup'],['class' => 'ghost btn btn-outline-primary']):''?>
+                <?= (Yii::$app->controller->action->id == 'signup')?html::a('Sign In',['login'],['class' => 'ghost btn btn-outline-primary']):''?>
+            </div>
+
+
+        </div>
     </div>
-    <!-- /.login-card-body -->
+
 </div>
-</div>
 
 
-</body>
-<footer class="footer" style="color: #fff">
-    <strong>Copyright &copy; <?= Html::encode(Yii::$app->name) ?> <?= date('Y') ?>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-        <b><?= Yii::signature() ?></b>
-    </div>
 
-</footer>
+
+
+
+
+
+
+
 
 <?php $this->endBody() ?>
 </body>

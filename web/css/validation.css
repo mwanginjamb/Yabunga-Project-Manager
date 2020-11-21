@@ -1,6 +1,13 @@
-div.help-block {
-                content:" * ";
+
+
+p.help-block {
+                content: '*  ';
                 color:red;
+                position: relative;
+                padding: 10px 5px;
+                margin: 3px;
+                font-weight: bold;
+
             }
 
             
