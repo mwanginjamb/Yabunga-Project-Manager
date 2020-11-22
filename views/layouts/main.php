@@ -40,7 +40,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 <body>
 
         <!-- Navbar -->
-        <div class="navbar">
+        <div class="navbar sticky">
             <div class="container flex">
                 <h1 class="logo"><?= Yii::$app->name ?></h1>
                 <nav>
@@ -62,7 +62,7 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 
 <!--    Footer section-->
 
-    <footer class="footer bg-dark py-5">
+    <footer class="footer bg-dark py-5 ">
         <div class="container grid grid-3">
             <div>
                 <h1>La Francois</h1>
@@ -93,10 +93,4 @@ $absoluteUrl = \yii\helpers\Url::home(true);
 <?php $this->endBody() ?>
 </body>
 </html>
-<?php $this->endPage();
-
-
-
-
-
-?>
+<?php $this->endPage(); ?>
